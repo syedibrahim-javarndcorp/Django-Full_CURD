@@ -1,0 +1,29 @@
+{% extends 'main.html'%}
+
+{% block content %}
+<table >
+  <tr>
+    <th>product id</th>
+    <th>product name</th>
+    <th>price</th>
+    <th>vendor</th>
+    <th>quantity</th>
+    <th>warrenty</th>
+    <th colspan = 2>operations</th>
+
+  </tr>
+
+  {% for prod in product %} 
+  <tr>
+    <td>{{prod.productid}}</td>
+    <td>{{prod.productname}}</td>
+    <td>{{prod.price}}</td>
+    <td>{{prod.vendor}}</td>
+    <td>{{prod.quantity}}</td>
+    <td>{{prod.waranty}}</td>
+    <td><a href="{% url "update" prod.productid  %}">Edit</a>
+    <td><a href="{% url "delete" prod.productid %}">Delete</a>
+  </tr>
+  {% endfor %} {% endblock content %}
+</table>
+

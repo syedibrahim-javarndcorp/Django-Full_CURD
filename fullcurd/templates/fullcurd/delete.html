@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <p> Are you sure to delete '{{pro}}' ?</p>
+
+    
+    <button  ><a href = {% url 'index'%}>Cancel </a></button>
+    
+
+    <input type = 'submit' value = "Confirm">
+</form>
+
+{% endblock content %}

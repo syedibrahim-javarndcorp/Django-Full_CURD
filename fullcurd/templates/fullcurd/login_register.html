@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+{% if page == 'register' %}
+<div class="forms">
+<form action="{% url 'register' %}" method="POST">
+{% csrf_token%}
+{% for field in form%} 
+
+<label for="text">{{field.label}}</label><br>
+{{field}}<br>
+
+{% comment %} {% if field.help_text %}
+<small> {{field.help_text}}</small>
+{% endif %} {% endcomment %}
+
+{% for error in field.errors %}
+<p style= "color : red;" > {{error}}</p>
+{% endfor %}
+
+{%endfor%}
+
+<input type="submit" value="Save">
+</form>
+
+</div>
+
+{% else %}
+<div  class='login'>
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <label for="username">Username :</label><br>
+    <input type="text" name="username" placeholder="Username"><br><br>
+    <label for="password">Password :</label><br>
+    <input type="password" name="password" placeholder="Password"><br><br>
+    <a href = {% url 'register' %}>New Register</a>
+    <input type="submit" value="Login">
+
+</form>
+</div>
+{% endif %}
+
+ 
+{% endblock content %} 
